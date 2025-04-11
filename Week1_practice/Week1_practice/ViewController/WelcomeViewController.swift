@@ -51,6 +51,22 @@ class WelcomeViewController: UIViewController {
         return button
     }()
     
+    let toggleLabel: UILabel = {
+        let label = UILabel(frame: CGRect(x: 60, y: 620, width: 160, height: 50))
+        label.text = "🔔 알림 설정하기"
+        label.textColor = .black
+        label.textAlignment = .center
+        label.numberOfLines = 1
+        label.font = UIFont(name: "Pretendard-Bold", size: 18)
+        return label
+    }()
+    
+    private let toggleSwitch: UISwitch = {
+        let toggle = UISwitch(frame: CGRect(x: 260, y: 630, width: 0, height: 0))
+        toggle.isOn = false
+        return toggle
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -60,7 +76,7 @@ class WelcomeViewController: UIViewController {
     }
     
     private func setLayout() {
-        [imageView, titleLabel, backToMainButton, backToLoginButton].forEach {
+        [imageView, titleLabel, backToMainButton, backToLoginButton, toggleLabel, toggleSwitch].forEach {
             self.view.addSubview($0)
         }
     }
