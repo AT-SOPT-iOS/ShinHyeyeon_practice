@@ -21,6 +21,11 @@
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
+		242B12BC2DB4030700595930 /* Week2_practice */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = Week2_practice;
+			sourceTree = "<group>";
+		};
 		2489926B2DA8D9E6002C8DBC /* Week1_practice */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			exceptions = (
@@ -46,6 +51,7 @@
 			isa = PBXGroup;
 			children = (
 				2489926B2DA8D9E6002C8DBC /* Week1_practice */,
+				242B12BC2DB4030700595930 /* Week2_practice */,
 				2489926A2DA8D9E6002C8DBC /* Products */,
 			);
 			sourceTree = "<group>";
@@ -74,6 +80,7 @@
 			dependencies = (
 			);
 			fileSystemSynchronizedGroups = (
+				242B12BC2DB4030700595930 /* Week2_practice */,
 				2489926B2DA8D9E6002C8DBC /* Week1_practice */,
 			);
 			name = Week1_practice;

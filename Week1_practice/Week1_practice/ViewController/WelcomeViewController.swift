@@ -82,7 +82,7 @@ class WelcomeViewController: UIViewController {
     }
     
     private func bindID() {
-        self.titleLabel.text = "\(id!)님 \n반가워요!"
+        self.titleLabel.text = "\(id ?? "혜연")님 \n반가워요!"
     }
     
     // 프로퍼티와 함수를 이용해 데이터 수정
