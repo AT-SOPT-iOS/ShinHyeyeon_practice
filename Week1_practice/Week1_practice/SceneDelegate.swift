@@ -19,7 +19,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         
         // 네비게이션 컨트롤러 추가
-        let loginViewController = LoginViewController()
+        let loginViewController = LoginViewController_Closure()
         let navigationController = UINavigationController(rootViewController: loginViewController)
         
         let window = UIWindow(windowScene: windowScene)
