@@ -11,6 +11,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		242B130A2DB6A38300595930 /* Exceptions for "Week2_practice" folder in "Week1_practice" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Delegate/LoginViewController_Delegate.swift,
+			);
+			target = 248992682DA8D9E6002C8DBC /* Week1_practice */;
+		};
 		2489927B2DA8D9E7002C8DBC /* Exceptions for "Week1_practice" folder in "Week1_practice" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
@@ -23,6 +30,9 @@
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		242B12BC2DB4030700595930 /* Week2_practice */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				242B130A2DB6A38300595930 /* Exceptions for "Week2_practice" folder in "Week1_practice" target */,
+			);
 			path = Week2_practice;
 			sourceTree = "<group>";
 		};
