@@ -9,6 +9,7 @@ import UIKit
 
 class ScrollViewController: UIViewController {
 
+    // 화면의 반으로 설정된 너비와 4분의 1로 설정된 높이를 초기화
     private var width = UIScreen.main.bounds.width/2
     private var height = UIScreen.main.bounds.height/4
     
@@ -39,7 +40,7 @@ class ScrollViewController: UIViewController {
 
     private func setLayout() {
         
-        // 이거 안해주면 뷰에서 안 보임
+        // // Autolayout에 꼭 필요, 이거 안해주면 뷰에서 안 보임
         scrollView.translatesAutoresizingMaskIntoConstraints = false
         contentView.translatesAutoresizingMaskIntoConstraints = false
         redView.translatesAutoresizingMaskIntoConstraints = false
@@ -52,6 +53,7 @@ class ScrollViewController: UIViewController {
         view.addSubview(scrollView)
         scrollView.addSubview(contentView)
         
+        // 각 뷰를 컨텐츠뷰에 추가
         [redView, orangeView, yellowView, greenView, blueView, purpleView].forEach {
             contentView.addSubview($0)
         }
@@ -72,6 +74,7 @@ class ScrollViewController: UIViewController {
             contentView.widthAnchor.constraint(equalTo: scrollView.frameLayoutGuide.widthAnchor)
         ])
         
+        // 컨텐츠 높이가 스크롤 뷰 높이보다 클 경우 스크롤이 가능하도록 제약조건 설정
         let heightConstraint = contentView.heightAnchor.constraint(greaterThanOrEqualTo: scrollView.heightAnchor)
         heightConstraint.priority = .defaultLow
         heightConstraint.isActive = true
@@ -117,15 +120,5 @@ class ScrollViewController: UIViewController {
             purpleView.heightAnchor.constraint(equalToConstant: boxHeight),
             purpleView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
         ])
-        
-        
-        //        NSLayoutConstraint.activate([
-        //            yellowView.widthAnchor.constraint(equalToConstant: width),
-//            yellowView.heightAnchor.constraint(equalToConstant: height)])
-//
-//        NSLayoutConstraint.activate([
-//            blackView.topAnchor.constraint(equalTo: self.yellowView.bottomAnchor, constant: height),
-//            blackView.widthAnchor.constraint(equalToConstant: width),
-//            blackView.heightAnchor.constraint(equalToConstant: height)])
     }
 }
