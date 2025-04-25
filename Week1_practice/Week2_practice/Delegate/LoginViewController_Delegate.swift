@@ -64,17 +64,15 @@ final class LoginViewController_Delegate: UIViewController {
     }
     
     @objc private func loginButtonDidTapped() {
-        // 모달 방식
         pushToWelcomeVC()
-        // 네비게이션 방식
 //        presentToWelcomeVC()
     }
     
     // 네비게이션
     private func pushToWelcomeVC() {
         let welcomeViewController = WelcomeViewController_Delegate()
+        welcomeViewController.delegate = self
         welcomeViewController.id = idTextField.text
-//        welcomeViewController.setLabelText(id: idTextField.text)
         self.navigationController?.pushViewController(welcomeViewController, animated: true)
     }
     
@@ -82,9 +80,7 @@ final class LoginViewController_Delegate: UIViewController {
     private func presentToWelcomeVC() {
         let welcomeViewController = WelcomeViewController_Delegate()
         welcomeViewController.modalPresentationStyle = .formSheet
-        welcomeViewController.delegate = self
         welcomeViewController.id = idTextField.text
-//        welcomeViewController.setLabelText(id: idTextField.text)
         self.present(welcomeViewController, animated: true)
     }
 }
