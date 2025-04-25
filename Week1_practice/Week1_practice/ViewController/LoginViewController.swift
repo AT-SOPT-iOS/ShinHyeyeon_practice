@@ -64,14 +64,14 @@ class LoginViewController: UIViewController {
     }
     
     @objc private func loginButtonDidTapped() {
-        // 네비게이션 방식
-        presentToWelcomeVC()
         // 모달 방식
 //        pushToWelcomeVC()
+        // 네비게이션 방식
+        presentToWelcomeVC()
     }
     
     // 네비게이션
-    private func presentToWelcomeVC() {
+    private func pushToWelcomeVC() {
         let welcomeViewController = WelcomeViewController()
         welcomeViewController.id = idTextField.text
 //        welcomeViewController.setLabelText(id: idTextField.text)
@@ -79,7 +79,7 @@ class LoginViewController: UIViewController {
     }
     
     // 모달
-    private func pushToWelcomeVC() {
+    private func presentToWelcomeVC() {
         let welcomeViewController = WelcomeViewController()
         welcomeViewController.modalPresentationStyle = .formSheet
         welcomeViewController.id = idTextField.text
@@ -87,13 +87,4 @@ class LoginViewController: UIViewController {
         self.present(welcomeViewController, animated: true)
     }
     
-}
-
-extension UITextField {
-    func addPadding(left: CGFloat? = nil, right: CGFloat? = nil) {
-        if let left {
-            leftView = UIView(frame: CGRect(x: 0, y: 0, width: left, height: 0))
-            leftViewMode = .always
-        }
-    }
 }
