@@ -9,6 +9,7 @@ import UIKit
 
 class LayoutViewController: UIViewController {
     
+    // 화면의 반으로 설정된 너비와 4분의 1로 설정된 높이를 초기화
     private var width = UIScreen.main.bounds.width/2
     private var height = UIScreen.main.bounds.height/4
 
@@ -23,11 +24,9 @@ class LayoutViewController: UIViewController {
         [yellowView, greenView, blackView, blueView].forEach {
             self.view.addSubview($0)
             $0.translatesAutoresizingMaskIntoConstraints = false
-//            [weak self] view in guard let self else {return}
-//            view.translatesAutoresizingMaskIntoConstraints = false
-//            self.view.addSubview(view)
         }
         
+        // 각 뷰의 제약조건 설정
         NSLayoutConstraint.activate([
             yellowView.widthAnchor.constraint(equalToConstant: width),
             yellowView.heightAnchor.constraint(equalToConstant: height)])
