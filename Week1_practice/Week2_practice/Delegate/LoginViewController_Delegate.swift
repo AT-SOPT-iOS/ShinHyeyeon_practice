@@ -1,13 +1,13 @@
 //
-//  LoginViewController.swift
+//  LoginViewController_Delegate.swift
 //  Week1_practice
 //
-//  Created by 신혜연 on 4/11/25.
+//  Created by 신혜연 on 4/22/25.
 //
-
 import UIKit
 
-class LoginViewController: UIViewController {
+// 프로토콜 채택
+final class LoginViewController_Delegate: UIViewController {
     
     let titleLabel: UILabel = {
         let label = UILabel(frame: CGRect(x: 84, y: 161, width: 246, height: 44))
@@ -64,27 +64,29 @@ class LoginViewController: UIViewController {
     }
     
     @objc private func loginButtonDidTapped() {
-        // 모달 방식
-//        pushToWelcomeVC()
-        // 네비게이션 방식
-        presentToWelcomeVC()
+        pushToWelcomeVC()
+//        presentToWelcomeVC()
     }
     
     // 네비게이션
     private func pushToWelcomeVC() {
-        let welcomeViewController = WelcomeViewController()
+        let welcomeViewController = WelcomeViewController_Delegate()
+        welcomeViewController.delegate = self
         welcomeViewController.id = idTextField.text
-//        welcomeViewController.setLabelText(id: idTextField.text)
         self.navigationController?.pushViewController(welcomeViewController, animated: true)
     }
     
     // 모달
     private func presentToWelcomeVC() {
-        let welcomeViewController = WelcomeViewController()
+        let welcomeViewController = WelcomeViewController_Delegate()
         welcomeViewController.modalPresentationStyle = .formSheet
         welcomeViewController.id = idTextField.text
-//        welcomeViewController.setLabelText(id: idTextField.text)
         self.present(welcomeViewController, animated: true)
     }
-    
+}
+
+extension LoginViewController_Delegate: DataBindDelegate {
+    func dataBinding(id: String) {
+        passwordTextField.text = id
+    }
 }

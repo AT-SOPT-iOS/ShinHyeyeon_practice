@@ -1,13 +1,13 @@
 //
-//  LoginViewController.swift
+//  LoginViewController_Closure.swift
 //  Week1_practice
 //
-//  Created by 신혜연 on 4/11/25.
+//  Created by 신혜연 on 4/22/25.
 //
 
 import UIKit
 
-class LoginViewController: UIViewController {
+class LoginViewController_Closure: UIViewController {
     
     let titleLabel: UILabel = {
         let label = UILabel(frame: CGRect(x: 84, y: 161, width: 246, height: 44))
@@ -64,27 +64,31 @@ class LoginViewController: UIViewController {
     }
     
     @objc private func loginButtonDidTapped() {
-        // 모달 방식
-//        pushToWelcomeVC()
-        // 네비게이션 방식
-        presentToWelcomeVC()
+        pushToWelcomeVC()
+//        presentToWelcomeVC()
     }
     
     // 네비게이션
     private func pushToWelcomeVC() {
-        let welcomeViewController = WelcomeViewController()
+        let welcomeViewController = WelcomeViewController_Closure()
         welcomeViewController.id = idTextField.text
-//        welcomeViewController.setLabelText(id: idTextField.text)
+        
+        // 클로저 정의해 호출 시 행동 수행
+        welcomeViewController.loginDataCompletion = { [weak self] data in
+            print("클로저가 받아온 id가 머냐면 ", data)
+            guard let self else { return }
+            self.passwordTextField.text = data
+        }
+        
         self.navigationController?.pushViewController(welcomeViewController, animated: true)
     }
     
     // 모달
     private func presentToWelcomeVC() {
-        let welcomeViewController = WelcomeViewController()
+        let welcomeViewController = WelcomeViewController_Delegate()
         welcomeViewController.modalPresentationStyle = .formSheet
         welcomeViewController.id = idTextField.text
 //        welcomeViewController.setLabelText(id: idTextField.text)
         self.present(welcomeViewController, animated: true)
     }
-    
 }
