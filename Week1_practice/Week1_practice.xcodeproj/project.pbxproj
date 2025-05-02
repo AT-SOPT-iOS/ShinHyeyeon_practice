@@ -6,6 +6,11 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		24A9B7632DC4719800C89706 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 24A9B7622DC4719800C89706 /* SnapKit */; };
+		24A9B7662DC471CC00C89706 /* Then in Frameworks */ = {isa = PBXBuildFile; productRef = 24A9B7652DC471CC00C89706 /* Then */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
 		248992692DA8D9E6002C8DBC /* Week1_practice.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Week1_practice.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -34,6 +39,11 @@
 			path = Week1_practice;
 			sourceTree = "<group>";
 		};
+		24A9B7572DC46E2A00C89706 /* Week3_practice */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = Week3_practice;
+			sourceTree = "<group>";
+		};
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -41,6 +51,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				24A9B7632DC4719800C89706 /* SnapKit in Frameworks */,
+				24A9B7662DC471CC00C89706 /* Then in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -52,6 +64,7 @@
 			children = (
 				2489926B2DA8D9E6002C8DBC /* Week1_practice */,
 				242B12BC2DB4030700595930 /* Week2_practice */,
+				24A9B7572DC46E2A00C89706 /* Week3_practice */,
 				2489926A2DA8D9E6002C8DBC /* Products */,
 			);
 			sourceTree = "<group>";
@@ -82,9 +95,12 @@
 			fileSystemSynchronizedGroups = (
 				242B12BC2DB4030700595930 /* Week2_practice */,
 				2489926B2DA8D9E6002C8DBC /* Week1_practice */,
+				24A9B7572DC46E2A00C89706 /* Week3_practice */,
 			);
 			name = Week1_practice;
 			packageProductDependencies = (
+				24A9B7622DC4719800C89706 /* SnapKit */,
+				24A9B7652DC471CC00C89706 /* Then */,
 			);
 			productName = Week1_practice;
 			productReference = 248992692DA8D9E6002C8DBC /* Week1_practice.app */;
@@ -114,6 +130,10 @@
 			);
 			mainGroup = 248992602DA8D9E6002C8DBC;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				24A9B7612DC4719800C89706 /* XCRemoteSwiftPackageReference "SnapKit" */,
+				24A9B7642DC471CC00C89706 /* XCRemoteSwiftPackageReference "Then" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 2489926A2DA8D9E6002C8DBC /* Products */;
 			projectDirPath = "";
@@ -340,6 +360,38 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		24A9B7612DC4719800C89706 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.7.1;
+			};
+		};
+		24A9B7642DC471CC00C89706 /* XCRemoteSwiftPackageReference "Then" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/devxoul/Then";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		24A9B7622DC4719800C89706 /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 24A9B7612DC4719800C89706 /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
+		};
+		24A9B7652DC471CC00C89706 /* Then */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 24A9B7642DC471CC00C89706 /* XCRemoteSwiftPackageReference "Then" */;
+			productName = Then;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 248992612DA8D9E6002C8DBC /* Project object */;
 }
