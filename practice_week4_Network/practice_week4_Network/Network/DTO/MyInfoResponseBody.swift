@@ -6,5 +6,9 @@
 //
 
 struct MyInfoResponseBody: Codable {
+    let data: NicknameData
+}
+
+struct NicknameData: Codable {
     let nickname: String
 }

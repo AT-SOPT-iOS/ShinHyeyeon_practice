@@ -75,7 +75,7 @@ class RegisterViewController: UIViewController {
         $0.layer.cornerRadius = 10
     }
     
-    private lazy var infoViewButton = UIButton().then {
+    private lazy var userInfoButton = UIButton().then {
         $0.addTarget(self,
                      action: #selector(infoViewButtonTap),
                      for: .touchUpInside)
@@ -121,7 +121,7 @@ class RegisterViewController: UIViewController {
         
         buttonsStackView.addArrangedSubviews(
             registerButton,
-            infoViewButton,
+            userInfoButton,
             loginButton
         )
         
@@ -141,7 +141,7 @@ class RegisterViewController: UIViewController {
             $0.snp.makeConstraints { $0.height.equalTo(40) }
         }
         
-        [registerButton, infoViewButton, loginButton].forEach {
+        [registerButton, userInfoButton, loginButton].forEach {
             $0.snp.makeConstraints { $0.height.equalTo(60) }
         }
     }

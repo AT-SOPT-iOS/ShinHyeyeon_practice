@@ -28,7 +28,7 @@ class GetMyInfoService {
         return request
     }
     
-    func fetchNickNameList(keyword: String?, userId: Int64) async throws -> [String] {
+    func fetchNickNameList(keyword: String?, userId: Int64) async throws -> String? {
         guard let request = makeRequest(keyword: keyword, userId: userId) else {
             throw NetworkError.requestEncodingError
         }
@@ -41,8 +41,11 @@ class GetMyInfoService {
         }
         
         do {
-            let decoded = try JSONDecoder().decode(NickNameListResponseWrapper.self, from: data)
-            return decoded.data.nicknameList
+            let decoded = try JSONDecoder().decode(MyInfoResponseBody.self, from: data)
+            
+            print("서버 응답 원본:\n", String(data: data, encoding: .utf8) ?? "디코딩 불가")
+            
+            return decoded.data.nickname
         } catch {
             print("디코딩 실패:", error)
             throw NetworkError.responseDecodingError
