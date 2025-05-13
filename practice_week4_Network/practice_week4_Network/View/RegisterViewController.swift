@@ -18,9 +18,21 @@ class RegisterViewController: UIViewController {
     private var password: String = ""
     private var nickName: String = ""
     
-    private let stackView = UIStackView().then {
+    private let textFieldsStackView = UIStackView().then {
         $0.axis = .vertical
+        $0.spacing = 16
         $0.distribution = .equalSpacing
+    }
+
+    private let buttonsStackView = UIStackView().then {
+        $0.axis = .vertical
+        $0.spacing = 20
+        $0.distribution = .fillEqually
+    }
+
+    private let mainStackView = UIStackView().then {
+        $0.axis = .vertical
+        $0.spacing = 60
     }
     
     private lazy var idTextField = UITextField().then {
@@ -73,53 +85,64 @@ class RegisterViewController: UIViewController {
         $0.layer.cornerRadius = 10
     }
     
+    private lazy var loginButton = UIButton().then {
+        $0.addTarget(self,
+                     action: #selector(loginButtonTap),
+                     for: .touchUpInside)
+        $0.backgroundColor = .systemBlue
+        $0.setTitle("로그인", for: .normal)
+        $0.titleLabel?.textColor = .white
+        $0.layer.cornerRadius = 10
+    }
+    
     // MARK: - Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        setStyle()
         setUI()
         setLayout()
     }
     
     // MARK: - UI Setting
     
+    private func setStyle() {
+        view.backgroundColor = .white
+    }
+    
     private func setUI() {
-        self.view.backgroundColor = .white
-        self.view.addSubview(stackView)
-        self.stackView.addArrangedSubviews(
+        view.addSubview(mainStackView)
+        textFieldsStackView.addArrangedSubviews(
             idTextField,
             passwordTextField,
-            nickNameTextField,
+            nickNameTextField
+        )
+        
+        buttonsStackView.addArrangedSubviews(
             registerButton,
-            infoViewButton
+            infoViewButton,
+            loginButton
+        )
+        
+        mainStackView.addArrangedSubviews(
+            textFieldsStackView,
+            buttonsStackView
         )
     }
     
     private func setLayout() {
-        stackView.snp.makeConstraints {
-            $0.leading.trailing.equalTo(self.view.safeAreaLayoutGuide).inset(40)
-            $0.top.bottom.equalTo(self.view.safeAreaLayoutGuide).inset(200)
+        mainStackView.snp.makeConstraints {
+            $0.leading.trailing.equalTo(view.safeAreaLayoutGuide).inset(40)
+            $0.top.bottom.equalTo(view.safeAreaLayoutGuide).inset(140)
         }
         
-        idTextField.snp.makeConstraints {
-            $0.height.equalTo(40)
+        [idTextField, passwordTextField, nickNameTextField].forEach {
+            $0.snp.makeConstraints { $0.height.equalTo(40) }
         }
         
-        passwordTextField.snp.makeConstraints {
-            $0.height.equalTo(40)
-        }
-        
-        nickNameTextField.snp.makeConstraints {
-            $0.height.equalTo(40)
-        }
-        
-        registerButton.snp.makeConstraints {
-            $0.height.equalTo(60)
-        }
-        
-        infoViewButton.snp.makeConstraints {
-            $0.height.equalTo(60)
+        [registerButton, infoViewButton, loginButton].forEach {
+            $0.snp.makeConstraints { $0.height.equalTo(60) }
         }
     }
     
@@ -138,7 +161,8 @@ class RegisterViewController: UIViewController {
     
     @objc private func infoViewButtonTap() {
         let infoVC = InfoViewController()
-        self.present(infoVC, animated: true)
+        let navigationVC = UINavigationController(rootViewController: infoVC)
+        self.present(navigationVC, animated: true)
     }
     
     @objc public func registerButtonTap() {
@@ -154,7 +178,7 @@ class RegisterViewController: UIViewController {
                 
                 let okAction = UIAlertAction(title: "확인", style: .default)
                 alert.addAction(okAction)
-                self.present(alert, animated: true)
+                
             } catch {
                 let alert = UIAlertController(
                     title: "계정 생성 실패",
@@ -167,6 +191,20 @@ class RegisterViewController: UIViewController {
                 self.present(alert, animated: true)
                 
                 print("회원가입 에러:", error)
+            }
+        }
+    }
+    
+    @objc public func loginButtonTap() {
+        Task {
+            do {
+                let response = try await LoginService.shared.PostLoginData(loginId: self.loginId, password: self.password)
+                print("로그인 성공! 유저ID: \(response.userId)")
+                
+                let successVC = SuccessLoginViewController()
+                self.navigationController?.pushViewController(successVC, animated: true)
+            } catch {
+                print("로그인 실패:", error)
             }
         }
     }
