@@ -178,6 +178,7 @@ class RegisterViewController: UIViewController {
                 
                 let okAction = UIAlertAction(title: "확인", style: .default)
                 alert.addAction(okAction)
+                self.present(alert, animated: true)
                 
             } catch {
                 let alert = UIAlertController(
