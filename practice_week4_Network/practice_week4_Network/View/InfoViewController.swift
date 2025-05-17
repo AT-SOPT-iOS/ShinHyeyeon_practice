@@ -5,6 +5,7 @@
 //  Created by 신혜연 on 5/9/25.
 //
 import UIKit
+
 import SnapKit
 import Then
 
@@ -37,9 +38,9 @@ final class InfoViewController: UIViewController {
             $0.bottom.equalTo(self.view.safeAreaLayoutGuide).inset(170)
         }
 
-        [keywordTextField, infoLabel, searchButton].forEach {
-            self.stackView.addArrangedSubview($0)
-        }
+        stackView.addArrangedSubviews(keywordTextField,
+                                      infoLabel,
+                                      searchButton)
     }
 
     // MARK: - UI Components
