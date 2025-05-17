@@ -11,13 +11,8 @@ class GetMyInfoService {
     static let shared = GetMyInfoService()
     private init() {}
     
-    func makeRequest(keyword: String?, userId: Int64) -> URLRequest? {
+    func makeRequest(userId: Int64) -> URLRequest? {
         var urlString = "http://api.atsopt-seminar4.site/api/v1/users/me"
-        
-        if let keyword = keyword, !keyword.isEmpty,
-           let encoded = keyword.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) {
-            urlString += "?keyword=\(encoded)"
-        }
         
         guard let url = URL(string: urlString) else { return nil }
         
@@ -28,8 +23,8 @@ class GetMyInfoService {
         return request
     }
     
-    func fetchNickNameList(keyword: String?, userId: Int64) async throws -> String? {
-        guard let request = makeRequest(keyword: keyword, userId: userId) else {
+    func fetchNickNameList(userId: Int64) async throws -> String? {
+        guard let request = makeRequest(userId: userId) else {
             throw NetworkError.requestEncodingError
         }
         

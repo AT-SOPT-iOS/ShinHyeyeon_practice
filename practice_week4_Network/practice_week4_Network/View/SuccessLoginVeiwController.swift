@@ -90,7 +90,7 @@ class SuccessLoginViewController: UIViewController {
             
             Task {
                 do {
-                    if let nickname = try await GetMyInfoService.shared.fetchNickNameList(keyword: nil, userId: userId) {
+                    if let nickname = try await GetMyInfoService.shared.fetchNickNameList(userId: userId) {
                         self.showResultAlert(title: "조회 결과", message: "닉네임: \(nickname)")
                     } else {
                         self.showResultAlert(title: "조회 결과", message: "닉네임이 존재하지 않아요.")

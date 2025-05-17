@@ -12,13 +12,8 @@ class ModifyService {
     static let shared = ModifyService()
     private init() {}
     
-    func makeRequest(nickname: String, keyword: String?, userId: Int64) -> URLRequest? {
+    func makeRequest(nickname: String, userId: Int64) -> URLRequest? {
         var urlString = "http://api.atsopt-seminar4.site/api/v1/users"
-        
-        if let keyword = keyword, !keyword.isEmpty,
-           let encoded = keyword.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) {
-            urlString += "?keyword=\(encoded)"
-        }
         
         guard let url = URL(string: urlString) else { return nil }
         
@@ -39,7 +34,7 @@ class ModifyService {
     }
     
     func modifyNickname(nickname: String, keyword: String?, userId: Int64) async throws {
-        guard let request = makeRequest(nickname: nickname, keyword: keyword, userId: userId) else {
+        guard let request = makeRequest(nickname: nickname, userId: userId) else {
             throw NetworkError.requestEncodingError
         }
         
