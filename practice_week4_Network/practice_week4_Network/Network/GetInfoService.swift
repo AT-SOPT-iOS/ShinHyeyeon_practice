@@ -1,5 +1,5 @@
 //
-//  GetInfoServiece.swift
+//  GetInfoService.swift
 //  practice_week4_Network
 //
 //  Created by 신혜연 on 5/9/25.
@@ -7,8 +7,8 @@
 
 import Foundation
 
-final class GetInfoServiece {
-    static let shared = GetInfoServiece()
+final class GetInfoService {
+    static let shared = GetInfoService()
     private init() {}
     
     func makeRequest(keyword: String?) -> URLRequest? {

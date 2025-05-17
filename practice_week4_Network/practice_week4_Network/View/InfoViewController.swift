@@ -83,7 +83,7 @@ final class InfoViewController: UIViewController {
     @objc private func searchButtonTap() {
         Task {
             do {
-                let nicknameList = try await GetInfoServiece.shared.fetchNickNameList(keyword: self.keyword.isEmpty ? nil : self.keyword)
+                let nicknameList = try await GetInfoService.shared.fetchNickNameList(keyword: self.keyword.isEmpty ? nil : self.keyword)
                 
                 let nicknameTexts = nicknameList.map { "\($0)" }.joined(separator: "\n")
                 self.infoLabel.text = "닉네임 리스트:\n\(nicknameTexts)"
